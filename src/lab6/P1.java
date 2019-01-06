@@ -7,7 +7,7 @@ public class P1 {
 		System.out.println("TEST");
 		int w;
 		w = P2.dodawanie(a,b);
-		System.out.println(w);
+		System.out.println(w + " " + P3.multi(a, b));
 	}
 
 }
