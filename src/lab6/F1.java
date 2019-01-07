@@ -28,6 +28,10 @@ public class F1 {
 	l1.setBounds(110, 10, 100, 30);
 	l1.setText("Wynik: ");
 	frame.add(l1);
+	JLabel l2 = new JLabel();
+	l2.setBounds(150, 90, 150, 30);
+	l2.setText("Autor: Dominik Guzia³ek");
+	frame.add(l2);
 	
 	JButton b1 = new JButton();
 	b1.setBounds(10, 45, 45, 45); //// pozycja x y oraz rozmiar h w
