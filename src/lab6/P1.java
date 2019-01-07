@@ -1,8 +1,10 @@
 package lab6;
 
 public class P1 {
-
+	
 	public static void main(String[] args) {
+		
+		F1.cal();
 		int a = 1,b = 2;
 		System.out.println("############### TEST ###########");         ///Autor Dominik Guzia³ek
 		float dodawanie, odejmowanie, mno¿enie, dzielenie;
