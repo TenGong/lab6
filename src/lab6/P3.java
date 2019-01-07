@@ -1,16 +1,10 @@
 package lab6;
 
-/* 
- * 
- * Mno¿enie
- * 
- * */
-
 public class P3 {
  
-	static float multi(float a, float b)
+	static int multi(int a, int b)
 	{	
-		float multi = a * b;
+		int multi = a * b;             ////Autor Dominik Guzia³ek :)
 		return multi;
 	}
 	
