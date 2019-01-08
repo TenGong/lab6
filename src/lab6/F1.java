@@ -112,7 +112,7 @@ public class F1 {
 	}    		
 }
 
-class MyIntFilter extends DocumentFilter {
+class MyIntFilter extends DocumentFilter {				//found on stackoverflow by user 'Hovercraft Full Of Eels' I think
 	   @Override
 	   public void insertString(FilterBypass fb, int offset, String string,
 	         AttributeSet attr) throws BadLocationException {
