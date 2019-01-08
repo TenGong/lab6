@@ -15,7 +15,7 @@ public class F1 {
 	JFrame frame= new JFrame(gc);
 	frame.setTitle("Kalkulator");
 	frame.setSize(300, 150);
-	frame.setResizable(false); /// Mo¿liwoœæ zmiany wielkoœci okna
+	frame.setResizable(false); /// Mozliwosc zmiany wielkosci okna
 	frame.setLayout(null);	
 	
 	JTextField t1 = new JTextField();
@@ -26,12 +26,17 @@ public class F1 {
 	frame.add(t2);
 	
 	JLabel l1 = new JLabel();
-	l1.setBounds(110, 10, 100, 30);
+	l1.setBounds(110, 10, 45, 30);
 	l1.setText("Wynik: ");
-	frame.add(l1);
+	frame.add(l1);							//Wyswietlanie wynikow
+	JLabel l11 = new JLabel();
+	l11.setBounds(155, 10, 100, 30);
+	l11.setText("cos");
+	frame.add(l11);
+	
 	JLabel l2 = new JLabel();
-	l2.setBounds(150, 90, 150, 30);
-	l2.setText("Autor: Dominik Guzia³ek, Mariusz Jackowski");
+	l2.setBounds(40, 90, 250, 30);
+	l2.setText("Autor: Dominik Guzia³ek, Mariusz Jackowski"); //autorzy
 	frame.add(l2);
 	
 	JButton b1 = new JButton();
@@ -52,14 +57,15 @@ public class F1 {
 	b4.setText("/");
 	frame.add(b4);
 	
-	frame.setVisible(true);    /// Musi byæ na koñcu
+	frame.setVisible(true);    /// Musi byc na koncu
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	b1.addActionListener(new ActionListener() {		//dodawanie
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				l1.setText("Name has been submitted.");				
+				
+			l1.setText("Name has been submitted.");				
 		}          
       });
 	b2.addActionListener(new ActionListener() {		//odejmowanie
