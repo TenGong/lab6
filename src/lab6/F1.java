@@ -19,7 +19,7 @@ public class F1 {
 	static void cal() {
 	JFrame frame= new JFrame(gc);
 	frame.setTitle("Kalkulator");
-	frame.setSize(300, 150);
+	frame.setSize(310, 250);
 	frame.setResizable(false); /// Mozliwosc zmiany wielkosci okna
 	frame.setLayout(null);	
 
@@ -30,7 +30,7 @@ public class F1 {
      doc.setDocumentFilter(new MyIntFilter());
      															//mozliwosc dodawania tylko typu integer(int)
 	 JTextField t2 = new JTextField(10);						//jest jednak problem nie mozna za pomoca backspace
-	 t2.setBounds(60, 10, 50, 30);								//usunac wszystkich liczb zostanie 1-na i by ja zmienic
+	 t2.setBounds(61, 10, 50, 30);								//usunac wszystkich liczb zostanie 1-na i by ja zmienic
 	 frame.add(t2);												//nalezy ja zaznaczyc by zmienic ja na inna
      PlainDocument docc = (PlainDocument) t2.getDocument();		//jak wpadniesz na pomysl jak to naprawic to
      docc.setDocumentFilter(new MyIntFilter());					//prosze bardzo teraz ide robic rownania
@@ -44,34 +44,38 @@ public class F1 {
 	frame.add(t2);
 	*/
 	JLabel l1 = new JLabel();
-	l1.setBounds(110, 10, 45, 30);
+	l1.setBounds(120, 26, 45, 30);
 	l1.setText("Wynik: ");
 	frame.add(l1);							//Wyswietlanie wynikow
 	JLabel l11 = new JLabel();
-	l11.setBounds(155, 10, 150, 30);
+	l11.setBounds(165, 26, 150, 30);
 	l11.setText("");
 	frame.add(l11);
 	
 	JLabel l2 = new JLabel();
-	l2.setBounds(40, 90, 250, 30);
+	l2.setBounds(40, 150, 250, 30);
 	l2.setText("Autor: Dominik Guzia³ek, Mariusz Jackowski"); //autorzy
 	frame.add(l2);
 	
+	JButton ct = new JButton();				// ct - clear text fields
+	ct.setBounds(10, 42, 101, 30);
+	ct.setText("Wyczyœæ");
+	frame.add(ct);
+	
 	JButton b1 = new JButton();
-	b1.setBounds(10, 45, 45, 45); //// pozycja x y oraz rozmiar h w
+	b1.setBounds(10, 85, 45, 45); 			//(x, y, wysokosc, szerokosc)
 	b1.setText("+");
 	frame.add(b1);
-	
 	JButton b2 = new JButton();
-	b2.setBounds(60, 45, 45, 45); 
+	b2.setBounds(60, 85, 45, 45); 
 	b2.setText("-");
 	frame.add(b2);
 	JButton b3 = new JButton();
-	b3.setBounds(110, 45, 45, 45);
+	b3.setBounds(110, 85, 45, 45);
 	b3.setText("*");
 	frame.add(b3);
 	JButton b4 = new JButton();
-	b4.setBounds(160, 45, 45, 45); 
+	b4.setBounds(160, 85, 45, 45); 
 	b4.setText("/");
 	frame.add(b4);
 	
@@ -112,27 +116,38 @@ public class F1 {
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			
 			int ai=Integer.parseInt(t1.getText());				//ai to wartosc z pierwszego okna textowego jako integer
 			int bi=Integer.parseInt(t2.getText());				//ai to samo tylko 2 okno
+			
 			float af=Float.parseFloat(t1.getText());			//af to wartosc z drugiefo okna textowego jako float
-			float bf=Float.parseFloat(t2.getText());			//bf to samo tylko drugie okno
+			float bf=Float.parseFloat(t2.getText());			//bf to samo tylko 2 okno
 			int nwd=NWD(ai,bi);
-			if(nwd==1) {
-			if(bf==0) {
-				l11.setText("Przez zero siê nie dzieli.");
-			}else {
+			
+			if(nwd==1 && bf != 0) {
 			float wynik=af/bf;
 			l11.setText(""+wynik);				
 			}
-			}else {
+			
+			if(nwd !=1 && bf!=0 && af != 0) {
 				int aa=ai/nwd;
 				int bb=bi/nwd;
 				float wynik=af/bf;
-				l11.setText(""+aa+"/"+bb+"="+wynik);
+				l11.setText(""+aa+"/"+bb+" = "+wynik);
+			}
+			
+			if(bf==0) {
+				l11.setText("Nie dzieli siê przez zero.");
+			}
+			
+			if(af == 0 && bf != 0 && nwd != 1) {
+				int wynik=ai/bi;
+				l11.setText(""+wynik);
 			}
 		}
       });
 	}
+	
 	public static int NWD(int pierwsza, int druga) {
 	    if (druga == 0) {
 	        return pierwsza;  
