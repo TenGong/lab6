@@ -102,14 +102,20 @@ public class F1 {
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				l11.setText("Name has been submitted.");				
+			int a=Integer.parseInt(t1.getText());
+			int b=Integer.parseInt(t2.getText());
+			int wynik=a*b;
+			l11.setText(""+wynik);		
 		}          
       });
 	b4.addActionListener(new ActionListener() {		//dzielenie
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				l11.setText("Name has been submitted.");				
+			float a=Float.parseFloat(t1.getText());
+			float b=Float.parseFloat(t2.getText());
+			float wynik=a/b;
+			l11.setText(""+wynik);				
 		}          
       });
 	}    		
