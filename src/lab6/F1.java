@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.*;
 
 public class F1 {
 
@@ -30,13 +31,14 @@ public class F1 {
 	frame.add(l1);
 	JLabel l2 = new JLabel();
 	l2.setBounds(150, 90, 150, 30);
-	l2.setText("Autor: Dominik Guzia³ek");
+	l2.setText("Autor: Dominik Guzia³ek, Mariusz Jackowski");
 	frame.add(l2);
 	
 	JButton b1 = new JButton();
 	b1.setBounds(10, 45, 45, 45); //// pozycja x y oraz rozmiar h w
 	b1.setText("+");
 	frame.add(b1);
+	
 	JButton b2 = new JButton();
 	b2.setBounds(60, 45, 45, 45); 
 	b2.setText("-");
@@ -52,6 +54,35 @@ public class F1 {
 	
 	frame.setVisible(true);    /// Musi byæ na koñcu
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
 	
+	b1.addActionListener(new ActionListener() {		//dodawanie
+        
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+				l1.setText("Name has been submitted.");				
+		}          
+      });
+	b2.addActionListener(new ActionListener() {		//odejmowanie
+        
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+				l1.setText("Name has been submitted.");				
+		}          
+      });
+	b3.addActionListener(new ActionListener() {		//mnozenie
+        
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+				l1.setText("Name has been submitted.");				
+		}          
+      });
+	b4.addActionListener(new ActionListener() {		//dzielenie
+        
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+				l1.setText("Name has been submitted.");				
+		}          
+      });
+	}    		
 }
+
