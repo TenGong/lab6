@@ -82,17 +82,20 @@ public class F1 {
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			/*int a=t1;
-			int b=t2;
-			int wynik=a+b;*/
-			l11.setText("Name has been submitted.");				
+			int a=Integer.parseInt(t1.getText());
+			int b=Integer.parseInt(t2.getText());
+			int wynik=a+b;
+			l11.setText(""+wynik);				
 		}          
       });
 	b2.addActionListener(new ActionListener() {		//odejmowanie
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-				l11.setText("Name has been submitted.");				
+			int a=Integer.parseInt(t1.getText());
+			int b=Integer.parseInt(t2.getText());
+			int wynik=a-b;
+			l11.setText(""+wynik);			
 		}          
       });
 	b3.addActionListener(new ActionListener() {		//mnozenie
