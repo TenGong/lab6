@@ -48,7 +48,7 @@ public class F1 {
 	l1.setText("Wynik: ");
 	frame.add(l1);							//Wyswietlanie wynikow
 	JLabel l11 = new JLabel();
-	l11.setBounds(155, 10, 100, 30);
+	l11.setBounds(155, 10, 150, 30);
 	l11.setText("");
 	frame.add(l11);
 	
@@ -112,14 +112,37 @@ public class F1 {
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			float a=Float.parseFloat(t1.getText());
-			float b=Float.parseFloat(t2.getText());
-			float wynik=a/b;
+			int ai=Integer.parseInt(t1.getText());				//ai to wartosc z pierwszego okna textowego jako integer
+			int bi=Integer.parseInt(t2.getText());				//ai to samo tylko 2 okno
+			float af=Float.parseFloat(t1.getText());			//af to wartosc z drugiefo okna textowego jako float
+			float bf=Float.parseFloat(t2.getText());			//bf to samo tylko drugie okno
+			int nwd=NWD(ai,bi);
+			if(nwd==1) {
+			if(bf==0) {
+				l11.setText("Przez zero siê nie dzieli.");
+			}else {
+			float wynik=af/bf;
 			l11.setText(""+wynik);				
-		}          
+			}
+			}else {
+				int aa=ai/nwd;
+				int bb=bi/nwd;
+				float wynik=af/bf;
+				l11.setText(""+aa+"/"+bb+"="+wynik);
+			}
+		}
       });
+	}
+	public static int NWD(int pierwsza, int druga) {
+	    if (druga == 0) {
+	        return pierwsza;  
+	    }else {
+	        return NWD(druga, pierwsza%druga);  // dwóch liczb.
+	    }
+	}
 	}    		
-}
+
+
 
 class MyIntFilter extends DocumentFilter {				//found on stackoverflow by user 'Hovercraft Full Of Eels' I think
 	   @Override
