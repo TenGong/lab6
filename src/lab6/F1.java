@@ -19,7 +19,7 @@ public class F1 {
 	static void cal() {
 	JFrame frame= new JFrame(gc);
 	frame.setTitle("Kalkulator");
-	frame.setSize(310, 250);
+	frame.setSize(310, 200);
 	frame.setResizable(false); /// Mozliwosc zmiany wielkosci okna
 	frame.setLayout(null);	
 
@@ -53,8 +53,8 @@ public class F1 {
 	frame.add(l11);
 	
 	JLabel l2 = new JLabel();
-	l2.setBounds(40, 150, 250, 30);
-	l2.setText("Autor: Dominik Guzia³ek, Mariusz Jackowski"); //autorzy
+	l2.setBounds(37, 140, 275, 30);
+	l2.setText("Autorzy: Dominik Guzia³ek, Mariusz Jackowski"); //autorzy
 	frame.add(l2);
 	
 	JButton ct = new JButton();				// ct - clear text fields
@@ -69,9 +69,9 @@ public class F1 {
 	JButton b2 = new JButton();
 	b2.setBounds(60, 85, 45, 45); 
 	b2.setText("-");
-	frame.add(b2);
-	JButton b3 = new JButton();
-	b3.setBounds(110, 85, 45, 45);
+	frame.add(b2);							//jak ty se piszesz autora to se tez napisza
+	JButton b3 = new JButton();				//autor duzej ilosci zmian w programie
+	b3.setBounds(110, 85, 45, 45);			//Mariusz Jackowski xD
 	b3.setText("*");
 	frame.add(b3);
 	JButton b4 = new JButton();
@@ -81,6 +81,15 @@ public class F1 {
 	
 	frame.setVisible(true);    /// Musi byc na koncu
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	ct.addActionListener(new ActionListener() {		//usuwanie
+        
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			t1.setText("");								//chcialem dodac przycisk by usuwac zawartosc pol tekstowych
+			t2.setText("");								//jak wpadniesz jak to narawic by dzialalo to super
+		}          										//je¿eli nie to 5 minut i da siê zmieniæ layout to tyle na dzis
+      });
 	
 	b1.addActionListener(new ActionListener() {		//dodawanie
         
@@ -128,18 +137,15 @@ public class F1 {
 			float wynik=af/bf;
 			l11.setText(""+wynik);				
 			}
-			
 			if(nwd !=1 && bf!=0 && af != 0) {
 				int aa=ai/nwd;
 				int bb=bi/nwd;
 				float wynik=af/bf;
 				l11.setText(""+aa+"/"+bb+" = "+wynik);
 			}
-			
 			if(bf==0) {
 				l11.setText("Nie dzieli siê przez zero.");
 			}
-			
 			if(af == 0 && bf != 0 && nwd != 1) {
 				int wynik=ai/bi;
 				l11.setText(""+wynik);
@@ -157,7 +163,7 @@ public class F1 {
 	}
 	}    		
 
-
+/****************************************klasa do filtru Integer(int)*******************************************/
 
 class MyIntFilter extends DocumentFilter {				//found on stackoverflow by user 'Hovercraft Full Of Eels' I think
 	   @Override
