@@ -95,10 +95,10 @@ public class F1 {
         
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+		
 			int a=Integer.parseInt(t1.getText());
 			int b=Integer.parseInt(t2.getText());
-			int wynik=a+b;
-			l11.setText(""+wynik);				
+			l11.setText(""+P2.dodaj(a, b));				
 		}          
       });
 	b2.addActionListener(new ActionListener() {		//odejmowanie
@@ -107,8 +107,7 @@ public class F1 {
 		public void actionPerformed(ActionEvent arg0) {
 			int a=Integer.parseInt(t1.getText());
 			int b=Integer.parseInt(t2.getText());
-			int wynik=a-b;
-			l11.setText(""+wynik);			
+			l11.setText(""+P5.minus(a, b));			
 		}          
       });
 	b3.addActionListener(new ActionListener() {		//mnozenie
@@ -117,8 +116,7 @@ public class F1 {
 		public void actionPerformed(ActionEvent arg0) {
 			int a=Integer.parseInt(t1.getText());
 			int b=Integer.parseInt(t2.getText());
-			int wynik=a*b;
-			l11.setText(""+wynik);		
+			l11.setText(""+P3.multi(a, b));		
 		}          
       });
 	b4.addActionListener(new ActionListener() {		//dzielenie
@@ -129,16 +127,22 @@ public class F1 {
 			int ai=Integer.parseInt(t1.getText());				//ai to wartosc z pierwszego okna textowego jako integer
 			int bi=Integer.parseInt(t2.getText());				//ai to samo tylko 2 okno
 			
-			float af=Float.parseFloat(t1.getText());			//af to wartosc z drugiefo okna textowego jako float
-			float bf=Float.parseFloat(t2.getText());			//bf to samo tylko 2 okno
-			int nwd=NWD(ai,bi);
+			//float af=Float.parseFloat(t1.getText());			//af to wartosc z drugiefo okna textowego jako float
+			//float bf=Float.parseFloat(t2.getText());			//bf to samo tylko 2 okno
+			if(bi==0) {
+				l11.setText("Nie dzieli siê przez zero.");
+			}else {
+				l11.setText(""+P4.dzielenie(ai, bi));
+			}
+			
+			/*int nwd=P6.NWD(ai, bi);
 			
 			if(nwd==1 && bf != 0) {
 			float wynik=af/bf;
 			l11.setText(""+wynik);				
 			}
-			if(nwd !=1 && bf!=0 && af != 0) {
-				int aa=ai/nwd;
+			if(nwd !=1 && bf!=0 && af != 0) {					//zostaw to narazie chce pozniej sprobowac zrobic ulamek
+				int aa=ai/nwd;									//czyli np 10/15 wynik: 2/3 = 0.66666667
 				int bb=bi/nwd;
 				float wynik=af/bf;
 				l11.setText(""+aa+"/"+bb+" = "+wynik);
@@ -149,18 +153,11 @@ public class F1 {
 			if(af == 0 && bf != 0 && nwd != 1) {
 				int wynik=ai/bi;
 				l11.setText(""+wynik);
-			}
+			}*/
 		}
       });
 	}
 	
-	public static int NWD(int pierwsza, int druga) {
-	    if (druga == 0) {
-	        return pierwsza;  
-	    }else {
-	        return NWD(druga, pierwsza%druga);  // dwóch liczb.
-	    }
-	}
 	}    		
 
 /****************************************klasa do filtru Integer(int)*******************************************/
