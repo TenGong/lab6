@@ -1,9 +1,9 @@
 package lab6;
 
 public class P4 {
-		static float dzielenie(float a, float b)
+		static double dzielenie(double a, double b)
 		{
-			float sqrt = a / b;
+			double sqrt = a / b;
 			return sqrt;
 		}
 }

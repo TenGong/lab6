@@ -1,9 +1,8 @@
 package lab6;
-
 public class P5 {
-	static float minus(float a, float b)
+	static double minus(double a, double b)
 	{
-		float minus = a - b;
+		double minus = a - b;
 		return minus;
 	}
 }

@@ -2,8 +2,8 @@ package lab6;
 
 public class P2 {
 
-	static float dodaj(float a, float b) {
-		float wynik = a + b;
+	static double dodaj(double a, double b) {
+		double wynik = a + b;
 		return wynik;
 	}
 	

@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.*;
+import java.math.BigDecimal;
 
 
 public class F1 {
@@ -80,9 +81,9 @@ public class F1 {
 		public void actionPerformed(ActionEvent e) {
 			
 			if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
-			int a=Integer.parseInt(t1.getText());
-			int b=Integer.parseInt(t2.getText());
-			l1.setText("Wynik: " + P2.dodaj(a, b));
+			double a=Double.parseDouble(t1.getText());
+			double b=Double.parseDouble(t2.getText());
+			l1.setText("Wynik: " + new BigDecimal(P2.dodaj(a, b)).toPlainString());
 			} else l1.setText("Wynik: B³¹d, Czy wprowadzi³eœ coœ co nie jest liczb¹?");
 		}          
       });
@@ -92,9 +93,9 @@ public class F1 {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
-			int a=Integer.parseInt(t1.getText());
-			int b=Integer.parseInt(t2.getText());
-			l1.setText("Wynik: " + P5.minus(a, b));			
+			double a=Double.parseDouble(t1.getText());
+			double b=Double.parseDouble(t2.getText());
+			l1.setText("Wynik: " + new BigDecimal(P5.minus(a, b)).toPlainString());			
 			}
 		}          
       });
@@ -104,9 +105,9 @@ public class F1 {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
-			int a=Integer.parseInt(t1.getText());
-			int b=Integer.parseInt(t2.getText());
-			l1.setText("Wynik: " + P3.multi(a, b));	
+			double a=Double.parseDouble(t1.getText());
+			double b=Double.parseDouble(t2.getText());
+			l1.setText("Wynik: " + new BigDecimal(P3.multi(a, b)).toPlainString());	
 			} else l1.setText("Wynik: B³¹d, Czy wprowadzi³eœ coœ co nie jest liczb¹?");
 		}          
       });
@@ -117,12 +118,12 @@ public class F1 {
 		public void actionPerformed(ActionEvent e) {
 		
 		if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
-			int a=Integer.parseInt(t1.getText());				
-			int b=Integer.parseInt(t2.getText());																																							
+			double a=Double.parseDouble(t1.getText());				
+			double b=Double.parseDouble(t2.getText());																																							
 				if(b==0) {
 				l1.setText("Nie dzieli siê przez zero.");
 				}	else {
-							l1.setText("Wynik: " + P4.dzielenie(a, b));
+							l1.setText("Wynik: " + new BigDecimal(P4.dzielenie(a, b)).toPlainString());
 						}
 		} else l1.setText("Wynik: B³¹d, Czy wprowadzi³eœ coœ co nie jest liczb¹?");
 			
