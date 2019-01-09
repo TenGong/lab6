@@ -6,11 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.*;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import javax.swing.text.DocumentFilter;
-import javax.swing.text.PlainDocument;
+
 
 public class F1 {
 
@@ -19,121 +15,116 @@ public class F1 {
 	static void cal() {
 	JFrame frame= new JFrame(gc);
 	frame.setTitle("Kalkulator");
-	frame.setSize(310, 200);
+	frame.setSize(450, 150);
 	frame.setResizable(false); /// Mozliwosc zmiany wielkosci okna
 	frame.setLayout(null);	
-
-	 JTextField t1 = new JTextField(10);
-	 t1.setBounds(10, 10, 50, 30);
-	 frame.add(t1);
-     PlainDocument doc = (PlainDocument) t1.getDocument();
-     doc.setDocumentFilter(new MyIntFilter());
-     															//mozliwosc dodawania tylko typu integer(int)
-	 JTextField t2 = new JTextField(10);						//jest jednak problem nie mozna za pomoca backspace
-	 t2.setBounds(61, 10, 50, 30);								//usunac wszystkich liczb zostanie 1-na i by ja zmienic
-	 frame.add(t2);												//nalezy ja zaznaczyc by zmienic ja na inna
-     PlainDocument docc = (PlainDocument) t2.getDocument();		//jak wpadniesz na pomysl jak to naprawic to
-     docc.setDocumentFilter(new MyIntFilter());					//prosze bardzo teraz ide robic rownania
 	
-	/*
 	JTextField t1 = new JTextField();
 	t1.setBounds(10, 10, 50, 30);
-	frame.add(t1);							//stare okna wprowadzania liczb
+	frame.add(t1);							/** stare okna wprowadzania liczb ( Ale Jarê zrobiê inny kod sprawdzaj¹cy czy wprowadzi³eœ liczbe. Poprzednie wywala³o b³¹d z czyszczeniem.   **/
 	JTextField t2 = new JTextField();
 	t2.setBounds(60, 10, 50, 30);
 	frame.add(t2);
-	*/
+	
 	JLabel l1 = new JLabel();
-	l1.setBounds(120, 26, 45, 30);
+	l1.setBounds(120, 10, 400, 30);
 	l1.setText("Wynik: ");
 	frame.add(l1);							//Wyswietlanie wynikow
-	JLabel l11 = new JLabel();
-	l11.setBounds(165, 26, 150, 30);
-	l11.setText("");
-	frame.add(l11);
 	
 	JLabel l2 = new JLabel();
-	l2.setBounds(37, 140, 275, 30);
+	l2.setBounds(10, 90, 275, 30);
 	l2.setText("Autorzy: Dominik Guzia³ek, Mariusz Jackowski"); //autorzy
 	frame.add(l2);
 	
+/**################################################# PRZYCISKI ###################################################################**/	
+	
 	JButton ct = new JButton();				// ct - clear text fields
-	ct.setBounds(10, 42, 101, 30);
+	ct.setBounds(210, 45, 100, 45);
 	ct.setText("Wyczyœæ");
 	frame.add(ct);
-	
 	JButton b1 = new JButton();
-	b1.setBounds(10, 85, 45, 45); 			//(x, y, wysokosc, szerokosc)
+	b1.setBounds(10, 45, 45, 45); 			//(x, y, wysokosc, szerokosc)
 	b1.setText("+");
 	frame.add(b1);
 	JButton b2 = new JButton();
-	b2.setBounds(60, 85, 45, 45); 
+	b2.setBounds(60, 45, 45, 45); 
 	b2.setText("-");
 	frame.add(b2);							//jak ty se piszesz autora to se tez napisza
 	JButton b3 = new JButton();				//autor duzej ilosci zmian w programie
-	b3.setBounds(110, 85, 45, 45);			//Mariusz Jackowski xD
+	b3.setBounds(110, 45, 45, 45);			//Mariusz Jackowski xD
 	b3.setText("*");
 	frame.add(b3);
 	JButton b4 = new JButton();
-	b4.setBounds(160, 85, 45, 45); 
+	b4.setBounds(160, 45, 45, 45); 
 	b4.setText("/");
 	frame.add(b4);
-	
+
+/**################################################# PRZYCISKI_END ###################################################################**/		
+
 	frame.setVisible(true);    /// Musi byc na koncu
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	ct.addActionListener(new ActionListener() {		//usuwanie
         
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			t1.setText("");								//chcialem dodac przycisk by usuwac zawartosc pol tekstowych
-			t2.setText("");								//jak wpadniesz jak to narawic by dzialalo to super
-		}          										//je¿eli nie to 5 minut i da siê zmieniæ layout to tyle na dzis
+		public void actionPerformed(ActionEvent e) {																	
+			t1.setText("");                                          
+			t2.setText("");
+			l1.setText("Wynik: ");
+		}          																  
       });
 	
 	b1.addActionListener(new ActionListener() {		//dodawanie
         
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
-		
+		public void actionPerformed(ActionEvent e) {
+			
+			if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
 			int a=Integer.parseInt(t1.getText());
 			int b=Integer.parseInt(t2.getText());
-			l11.setText(""+P2.dodaj(a, b));				
+			l1.setText("Wynik: " + P2.dodaj(a, b));
+			} else l1.setText("Wynik: B³¹d, Czy wprowadzi³eœ coœ co nie jest liczb¹?");
 		}          
       });
+	
 	b2.addActionListener(new ActionListener() {		//odejmowanie
         
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent e) {
+			if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
 			int a=Integer.parseInt(t1.getText());
 			int b=Integer.parseInt(t2.getText());
-			l11.setText(""+P5.minus(a, b));			
+			l1.setText("Wynik: " + P5.minus(a, b));			
+			}
 		}          
       });
+	
 	b3.addActionListener(new ActionListener() {		//mnozenie
         
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent e) {
+			if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
 			int a=Integer.parseInt(t1.getText());
 			int b=Integer.parseInt(t2.getText());
-			l11.setText(""+P3.multi(a, b));		
+			l1.setText("Wynik: " + P3.multi(a, b));	
+			} else l1.setText("Wynik: B³¹d, Czy wprowadzi³eœ coœ co nie jest liczb¹?");
 		}          
       });
+	
 	b4.addActionListener(new ActionListener() {		//dzielenie
         
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			
-			int ai=Integer.parseInt(t1.getText());				//ai to wartosc z pierwszego okna textowego jako integer
-			int bi=Integer.parseInt(t2.getText());				//ai to samo tylko 2 okno
-			
-			//float af=Float.parseFloat(t1.getText());			//af to wartosc z drugiefo okna textowego jako float
-			//float bf=Float.parseFloat(t2.getText());			//bf to samo tylko 2 okno
-			if(bi==0) {
-				l11.setText("Nie dzieli siê przez zero.");
-			}else {
-				l11.setText(""+P4.dzielenie(ai, bi));
-			}
+		public void actionPerformed(ActionEvent e) {
+		
+		if( L1.Czy_liczba(t1.getText()) == "t" && L1.Czy_liczba(t2.getText()) == "t") {
+			int a=Integer.parseInt(t1.getText());				
+			int b=Integer.parseInt(t2.getText());																																							
+				if(b==0) {
+				l1.setText("Nie dzieli siê przez zero.");
+				}	else {
+							l1.setText("Wynik: " + P4.dzielenie(a, b));
+						}
+		} else l1.setText("Wynik: B³¹d, Czy wprowadzi³eœ coœ co nie jest liczb¹?");
 			
 			/*int nwd=P6.NWD(ai, bi);
 			
@@ -157,68 +148,6 @@ public class F1 {
 		}
       });
 	}
-	
-	}    		
+}    		
 
-/****************************************klasa do filtru Integer(int)*******************************************/
-
-class MyIntFilter extends DocumentFilter {				//found on stackoverflow by user 'Hovercraft Full Of Eels' I think
-	   @Override
-	   public void insertString(FilterBypass fb, int offset, String string,
-	         AttributeSet attr) throws BadLocationException {
-
-	      Document doc = fb.getDocument();
-	      StringBuilder sb = new StringBuilder();
-	      sb.append(doc.getText(0, doc.getLength()));
-	      sb.insert(offset, string);
-
-	      if (test(sb.toString())) {
-	         super.insertString(fb, offset, string, attr);
-	      } else {
-	         // warn the user and don't allow the insert
-	      }
-	   }
-
-	   private boolean test(String text) {
-	      try {
-	         Integer.parseInt(text);
-	         return true;
-	      } catch (NumberFormatException e) {
-	         return false;
-	      }
-	   }
-
-	   @Override
-	   public void replace(FilterBypass fb, int offset, int length, String text,
-	         AttributeSet attrs) throws BadLocationException {
-
-	      Document doc = fb.getDocument();
-	      StringBuilder sb = new StringBuilder();
-	      sb.append(doc.getText(0, doc.getLength()));
-	      sb.replace(offset, offset + length, text);
-
-	      if (test(sb.toString())) {
-	         super.replace(fb, offset, length, text, attrs);
-	      } else {
-	         // warn the user and don't allow the insert
-	      }
-
-	   }
-
-	   @Override
-	   public void remove(FilterBypass fb, int offset, int length)
-	         throws BadLocationException {
-	      Document doc = fb.getDocument();
-	      StringBuilder sb = new StringBuilder();
-	      sb.append(doc.getText(0, doc.getLength()));
-	      sb.delete(offset, offset + length);
-
-	      if (test(sb.toString())) {
-	         super.remove(fb, offset, length);
-	      } else {
-	         // warn the user and don't allow the insert
-	      }
-
-	   }
-	}
 
