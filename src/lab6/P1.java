@@ -4,7 +4,7 @@ public class P1 {
 
 	public static void main(String[] args) {
 		
-		F1.cal();
+		F1.cal(); /// Nie usuwaj.
 	}
 
 }

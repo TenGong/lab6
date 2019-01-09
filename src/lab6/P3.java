@@ -2,9 +2,9 @@ package lab6;
 
 public class P3 {
  
-	static int multi(int a, int b)
+	static float multi(float a, float b)
 	{	
-		int multi = a * b;             ////Autor Dominik Guzia³ek :)
+		float  multi = a * b;             ////Autor Domino kielbasa i wino :)
 		return multi;
 	}
 	
